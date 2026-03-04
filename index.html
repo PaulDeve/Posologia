@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1e3a8a">
+  <meta name="description" content="Sistema offline de administración de medicamentos para personal clínico">
+  <title>NurseApp - Sistema Clínico Offline</title>
+  
+  <!-- Capacitor -->
+  <script src="capacitor://"></script>
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="src/styles/theme.css">
+  <link rel="stylesheet" href="src/styles/layout.css">
+  <link rel="stylesheet" href="src/styles/components.css">
+  <link rel="stylesheet" href="src/styles/animations.css">
+  <link rel="stylesheet" href="src/styles/alerts.css">
+</head>
+<body>
+  <!-- Main Container -->
+  <div id="app" class="app-container">
+    <!-- Header -->
+    <header class="header">
+      <h1 class="header__title" id="moduleTitle">NurseApp</h1>
+      <button class="header__theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+        🌙
+      </button>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Goteo Module -->
+      <section id="goteoModule" class="module active">
+        <h2 class="module__title">Cálculo de Goteo IV</h2>
+        <div class="goteo-container"></div>
+      </section>
+
+      <!-- Dosis Module -->
+      <section id="dosisModule" class="module">
+        <h2 class="module__title">Dosificación</h2>
+        <div class="dosis-container"></div>
+      </section>
+
+      <!-- Emergencia Module -->
+      <section id="emergenciaModule" class="module">
+        <h2 class="module__title">Modo Emergencia</h2>
+        <div class="emergencia-container"></div>
+      </section>
+
+      <!-- Registro Module -->
+      <section id="registroModule" class="module">
+        <h2 class="module__title">Registro de Medicaciones</h2>
+        <div class="registro-container"></div>
+      </section>
+
+      <!-- Ajustes Module -->
+      <section id="ajustesModule" class="module">
+        <h2 class="module__title">Ajustes</h2>
+        <div class="ajustes-container"></div>
+      </section>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+      <button class="nav-item active" data-module="goteoModule" title="Cálculo de Goteo">
+        <span class="nav-icon">💧</span>
+        <span class="nav-label">Goteo</span>
+      </button>
+      <button class="nav-item" data-module="dosisModule" title="Dosificación">
+        <span class="nav-icon">💉</span>
+        <span class="nav-label">Dosis</span>
+      </button>
+      <button class="nav-item" data-module="emergenciaModule" title="Modo Emergencia">
+        <span class="nav-icon">🚑</span>
+        <span class="nav-label">Emergencia</span>
+      </button>
+      <button class="nav-item" data-module="registroModule" title="Registro">
+        <span class="nav-icon">📝</span>
+        <span class="nav-label">Registro</span>
+      </button>
+      <button class="nav-item" data-module="ajustesModule" title="Ajustes">
+        <span class="nav-icon">⚙️</span>
+        <span class="nav-label">Ajustes</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Alerts Container -->
+  <div id="alertsContainer" class="alerts-container"></div>
+
+  <!-- Loading Spinner -->
+  <div id="loadingSpinner" class="loading-spinner hidden">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="src/utils/db.js"></script>
+  <script src="src/utils/alerts.js"></script>
+  <script src="src/utils/validators.js"></script>
+  <script src="src/utils/formatters.js"></script>
+  <script src="src/database/medications.js"></script>
+  <script src="src/database/example_data.js"></script>
+  <script src="src/modules/goteo.js"></script>
+  <script src="src/modules/dosis.js"></script>
+  <script src="src/modules/emergencia.js"></script>
+  <script src="src/modules/registro.js"></script>
+  <script src="src/modules/ajustes.js"></script>
+  <script src="src/tests/test-suite.js"></script>
+  <script src="src/app.js"></script>
+</body>
+</html>

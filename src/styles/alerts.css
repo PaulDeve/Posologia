@@ -1,0 +1,313 @@
+/* ============================================
+   SISTEMA DE ALERTAS VISUALES
+   ============================================ */
+
+.alerts-container {
+  position: fixed;
+  top: var(--spacing-lg);
+  right: var(--spacing-lg);
+  left: var(--spacing-lg);
+  z-index: var(--z-modal);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* TARJETA DE ALERTA */
+.alert {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: 12px;
+  margin-bottom: var(--spacing-md);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  animation: slideDown 0.3s ease-out;
+  border: none;
+  background-color: var(--surface);
+  word-break: break-word;
+  max-width: 350px;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.alert.closing {
+  animation: slideUp 0.3s ease-out forwards;
+}
+
+/* ICONO */
+.alert__icon {
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+}
+
+/* CONTENIDO */
+.alert__content {
+  flex: 1;
+}
+
+.alert__title {
+  font-weight: 600;
+  margin-bottom: 0;
+  font-size: 0.95rem;
+}
+
+.alert__message {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.alert-success .alert__message {
+  display: none;
+}
+
+/* BOTÓN CERRAR */
+.alert__close {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.6;
+  transition: opacity var(--transition-fast);
+  padding: 0;
+  margin-left: var(--spacing-sm);
+}
+
+.alert__close:hover {
+  opacity: 1;
+}
+
+/* ============================================
+   VARIANTES DE ALERTA
+   ============================================ */
+
+/* INFORMATIVA */
+.alert-info {
+  background-color: rgba(14, 165, 233, 0.1);
+  border-color: var(--info);
+  color: #0369a1;
+}
+
+[data-theme="dark"] .alert-info {
+  background-color: rgba(14, 165, 233, 0.15);
+  color: #06b6d4;
+}
+
+/* ADVERTENCIA */
+.alert-warning {
+  background-color: rgba(245, 158, 11, 0.1);
+  border-color: var(--warning);
+  color: #92400e;
+}
+
+[data-theme="dark"] .alert-warning {
+  background-color: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+}
+
+/* EXITOSA */
+.alert-success {
+  background-color: #10b981;
+  border-color: #059669;
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+}
+
+[data-theme="dark"] .alert-success {
+  background-color: #10b981;
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+}
+
+/* CRÍTICA / PELIGRO */
+.alert-danger {
+  background-color: var(--danger-lightest);
+  border-color: var(--danger);
+  color: #7f1d1d;
+  animation: pulse 2s infinite;
+}
+
+[data-theme="dark"] .alert-danger {
+  background-color: rgba(220, 38, 38, 0.15);
+  color: #fca5a5;
+}
+
+/* ============================================
+   ALERTA BLOQUEANTE (MODAL)
+   ============================================ */
+
+.alert-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal);
+  animation: fadeIn var(--transition-base);
+}
+
+.alert-modal.hidden {
+  display: none;
+}
+
+.alert-modal__content {
+  background-color: var(--surface);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-2xl);
+  max-width: 90%;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  animation: scaleUp var(--transition-base);
+}
+
+.alert-modal__header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 2px solid var(--border);
+}
+
+.alert-modal__icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.alert-modal__title {
+  margin: 0;
+  font-size: 1.5rem;
+  flex: 1;
+}
+
+.alert-modal__close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity var(--transition-fast);
+  padding: 0;
+}
+
+.alert-modal__close:hover {
+  opacity: 1;
+}
+
+.alert-modal__body {
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.8;
+}
+
+.alert-modal__actions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   ESTILOS ESPECÍFICOS PARA CLÍNICA
+   ============================================ */
+
+/* ALERTA DE DOSIS EXCESIVA */
+.alert-overdose {
+  background-color: var(--danger-lightest);
+  border-color: var(--danger);
+  border-width: 3px;
+}
+
+.alert-overdose .alert__icon {
+  animation: pulse 1.5s infinite;
+}
+
+/* ALERTA DE INCOMPATIBILIDAD */
+.alert-incompatibility {
+  background-color: rgba(245, 158, 11, 0.15);
+  border-color: var(--warning);
+}
+
+/* CONFIRMACIÓN CRÍTICA */
+.confirmation-dialog {
+  border-left: 4px solid var(--danger);
+  background-color: var(--danger-lightest);
+}
+
+.confirmation-dialog .btn-group {
+  margin-top: var(--spacing-lg);
+}
+
+/* ============================================
+   NOTIFICACIÓN FLOTANTE SIMPLE
+   ============================================ */
+
+.toast {
+  position: fixed;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--text-main);
+  color: var(--text-white);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: var(--z-fixed);
+  animation: slideUp 0.3s ease-out;
+  max-width: 90%;
+  text-align: center;
+}
+
+.toast.closing {
+  animation: fadeOut 0.3s ease-out forwards;
+}
+
+/* ============================================
+   INDICADOR DE CARGANDO
+   ============================================ */
+
+.loading-spinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal);
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-md);
+}
+
+.loading-spinner.hidden {
+  display: none;
+}
+
+.loading-spinner .spinner {
+  width: 60px;
+  height: 60px;
+  border-width: 4px;
+}
