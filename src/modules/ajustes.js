@@ -174,19 +174,24 @@ class AjustesModule {
         </div>
       </div>
 
-      <!-- ABOUT -->
-      <div class="card" style="margin-top: var(--spacing-lg); background: var(--surface-alt);">
-        <div class="card__content" style="text-align: center;">
-          <div style="font-size: 2rem; margin-bottom: var(--spacing-md);">💉</div>
-          <h3 style="margin-bottom: var(--spacing-sm);">NurseApp</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">
-            Sistema Clínico Offline para Administración de Medicamentos<br/>
-            <strong>v1.0.0</strong> • Seguro • Funcional • Offline-First<br/>
-            <br/>
-            Diseñado para enfermería y personal médico en contextos críticos.
-          </p>
-        </div>
-      </div>
+<!-- ABOUT -->
+<div class="card" style="margin-top: var(--spacing-lg); background: var(--surface-alt);">
+  <div class="card__content" style="text-align: center;">
+    <div style="font-size: 2rem; margin-bottom: var(--spacing-md);">💉</div>
+    <h3 style="margin-bottom: var(--spacing-sm);">NurseApp</h3>
+    <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">
+      Sistema Clínico Offline para Administración de Medicamentos<br/>
+      <strong>v1.0.0</strong> • Seguro • Funcional • Offline-First<br/>
+      <br/>
+      Diseñado para enfermería y personal médico en contextos críticos.
+    </p>
+    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: var(--spacing-md); margin-bottom: 0;">
+      &copy; 2026 NurseApp. Todos los derechos reservados.<br/>
+      <small>Desarrollado por <strong>Paul Edward</strong></small><br/>
+      <small>Aplicación de código abierto | Solo uso educativo y de referencia clínica</small>
+    </p>
+  </div>
+</div>
     `;
 
     this.loadSystemInfo();
@@ -318,3 +323,4 @@ class AjustesModule {
 document.addEventListener('DOMContentLoaded', () => {
   new AjustesModule();
 });
+
